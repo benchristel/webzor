@@ -4,6 +4,10 @@ test.fn = function(fname) {
   }
 
   var funcUnderTest = AppState.definitions.fn[fname]
+
+  if (!funcUnderTest) {
+    throw 'You must pass a function name to test.fn. There is no function named `' + fname + '`.'
+  }
   var currentTest = null
 
   var testBuilder = {
@@ -13,6 +17,10 @@ test.fn = function(fname) {
       return testBuilder
     },
     returnValue: function(matcher, expected) {
+      if (!currentTest) {
+        throw "test.fn('" + fname + "').returnValue was called with no test in progress. You must call `that` first."
+      }
+
       currentTest.expectations.push({
         matcher: matcher,
         expected: expected

@@ -9,6 +9,20 @@ describe('test.fn', function() {
     }).toThrow('You must pass a function name to test.fn')
   })
 
+  it('requires the function name to refer to an existing function', function() {
+    expect(function() {
+      test.fn('noExisto')
+    }).toThrow('You must pass a function name to test.fn. There is no function named `noExisto`.')
+  })
+
+  it('requires `that` to be called before making assertions', function() {
+    define.fn('sayHello').as(function() {})
+
+    expect(function() {
+      test.fn('sayHello').returnValue(should.equal, 'hello')
+    }).toThrow("test.fn('sayHello').returnValue was called with no test in progress. You must call `that` first.")
+  })
+
   it('records a test failure', function() {
     define.fn('sayHello').as(function() {
       return 'hyuk'
