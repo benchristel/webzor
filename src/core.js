@@ -1,20 +1,42 @@
-var AppState = {}
-var Internal = {matchers: {}}
-var define = {}
-var test = {}
-var should
+"use strict";
+
+var define = {
+  fn: null,
+  matcher: null
+}
+Object.seal(define)
+
+var test = {
+  fn: null
+}
+Object.seal(test)
+
+var AppState = {
+  definitions: {
+    fn: null,
+    matchers: null,
+    tests: null
+  },
+  reset: null,
+  testFailures: null
+}
+Object.seal(AppState)
+Object.seal(AppState.definitions)
+
+var Internal = {
+  matchers: {}
+}
+
+var should = null
 
 AppState.reset = function() {
-  AppState.definitions = {}
   AppState.definitions.fn = {}
   AppState.definitions.matchers = Object.create(Internal.matchers)
-  should = Object.create(AppState.definitions.matchers)
   AppState.definitions.tests = []
-  Object.seal(AppState.definitions)
+
+  should = Object.create(AppState.definitions.matchers)
 
   AppState.testFailures = []
-
-  Object.seal(AppState)
 }
 
 AppState.reset()
