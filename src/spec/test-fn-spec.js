@@ -10,7 +10,7 @@ describe('test.fn', function() {
 
     test.fn('sayHello')
       .that('it returns "hello"')
-      .returnValue(AppState.definitions.matchers.equal, 'hello')
+      .returnValue(should.equal, 'hello')
 
     expect(AppState.testFailures.length).toBe(0)
 
