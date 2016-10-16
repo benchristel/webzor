@@ -9,11 +9,16 @@ test.fn = function(fname) {
     throw 'You must pass a function name to test.fn. There is no function named `' + fname + '`.'
   }
   var currentTest = null
+  var args
 
   var testBuilder = {
     that: function(requirement) {
       currentTest = new Internal.FnTest(fname, funcUnderTest, requirement)
       AppState.definitions.tests.push(currentTest)
+      return testBuilder
+    },
+    given: function() {
+      currentTest.args = Internal.toArray(arguments)
       return testBuilder
     },
     returnValue: function(matcher, expected) {

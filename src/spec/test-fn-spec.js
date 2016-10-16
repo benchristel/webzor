@@ -44,4 +44,43 @@ describe('test.fn', function() {
     expect(failures[0].actual).toBe('hyuk')
     expect(failures[0].matcherName).toBe('equal')
   })
+
+  it('tests a function with arguments', function() {
+    define.fn('greet').as(function(name, punctuation) {
+      return 'Hello, ' + name + punctuation
+    })
+
+    test.fn('greet')
+      .that('it greets Bob')
+      .given('Bob', '!')
+      .returnValue(should.equal, 'Hello, Bob!')
+
+    Internal.runTests()
+
+    expect(AppState.testFailures.length).toBe(0)
+  })
+
+  it('records a test failure for a function with arguments', function() {
+    define.fn('greet').as(function(name) {
+      return 'bzzt'
+    })
+
+    test.fn('greet')
+      .that('it greets Bob')
+      .given('Bob')
+      .returnValue(should.equal, 'Hello, Bob')
+
+    var failures = AppState.testFailures
+    expect(failures.length).toBe(0)
+
+    Internal.runTests()
+
+    expect(failures.length).toBe(1)
+    expect(failures[0].type).toBe('fn')
+    expect(failures[0].subjectName).toBe('greet')
+    expect(failures[0].args).toEqual(['Bob'])
+    expect(failures[0].expected).toBe('Hello, Bob')
+    expect(failures[0].actual).toBe('bzzt')
+    expect(failures[0].matcherName).toBe('equal')
+  })
 })
