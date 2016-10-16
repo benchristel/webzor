@@ -14,7 +14,7 @@ describe('test.fn', function() {
 
     expect(AppState.testFailures.length).toBe(0)
 
-    AppState.runTests()
+    Internal.runTests()
     var failures = AppState.testFailures
 
     expect(failures.length).toBe(1)

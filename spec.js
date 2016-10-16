@@ -13,8 +13,7 @@ define.matcher = function(name) {
   }
 }
 
-// todo move to Internal
-AppState.runTests = function() {
+Internal.runTests = function() {
   AppState.definitions.tests.forEach(function(test) {
     var failures = test.failures()
     if (failures.length) {
@@ -167,7 +166,7 @@ describe('test.fn', function() {
 
     expect(AppState.testFailures.length).toBe(0)
 
-    AppState.runTests()
+    Internal.runTests()
     var failures = AppState.testFailures
 
     expect(failures.length).toBe(1)

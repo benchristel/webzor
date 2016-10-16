@@ -13,8 +13,7 @@ define.matcher = function(name) {
   }
 }
 
-// todo move to Internal
-AppState.runTests = function() {
+Internal.runTests = function() {
   AppState.definitions.tests.forEach(function(test) {
     var failures = test.failures()
     if (failures.length) {
