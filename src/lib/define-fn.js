@@ -1,9 +1,7 @@
 define.fn = function(name) {
-  var builder = {
+  return {
     as: function(definition) {
       AppState.definitions.fn[name] = definition
-      return builder
     }
   }
-  return builder
 }
