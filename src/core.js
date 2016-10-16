@@ -4,26 +4,6 @@ var define = {}
 var test = {}
 var should
 
-define.matcher = function(name) {
-  return {
-    as: function(definition) {
-      definition.matcherName = name
-      AppState.definitions.matchers[name] = definition
-    }
-  }
-}
-
-Internal.runTests = function() {
-  AppState.definitions.tests.forEach(function(test) {
-    var failures = test.failures()
-    if (failures.length) {
-      failures.forEach(function(failure) {
-        AppState.testFailures.push(failure)
-      })
-    }
-  })
-}
-
 AppState.reset = function() {
   AppState.definitions = {}
   AppState.definitions.fn = {}
