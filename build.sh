@@ -4,8 +4,6 @@ which jasmine > /dev/null || echo 'jasmine must be installed first: try `npm i -
 
 SOURCE_FILES='src/core.js src/lib/*.js'
 
-shopt -s extglob
-
 # construct the test file
 cat $SOURCE_FILES src/spec/*.js > spec.js
 
