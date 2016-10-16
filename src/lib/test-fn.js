@@ -1,4 +1,8 @@
 test.fn = function(fname) {
+  if (!fname) {
+    throw 'You must pass a function name to test.fn'
+  }
+
   var funcUnderTest = AppState.definitions.fn[fname]
   var currentTest = null
 

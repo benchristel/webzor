@@ -3,6 +3,12 @@ describe('test.fn', function() {
     AppState.reset()
   })
 
+  it('requires a function name', function() {
+    expect(function() {
+      test.fn()
+    }).toThrow('You must pass a function name to test.fn')
+  })
+
   it('records a test failure', function() {
     define.fn('sayHello').as(function() {
       return 'hyuk'
