@@ -1,6 +1,6 @@
 describe('define.fn', function() {
   beforeEach(function() {
-    AppState.setup()
+    AppState.reset()
   })
 
   it('adds the function to AppState.definitions.fn', function() {

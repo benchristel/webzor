@@ -1,6 +1,6 @@
 describe('test.fn', function() {
   beforeEach(function() {
-    AppState.setup()
+    AppState.reset()
   })
 
   it('records a test failure', function() {

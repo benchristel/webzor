@@ -24,7 +24,7 @@ Internal.runTests = function() {
   })
 }
 
-AppState.setup = function() {
+AppState.reset = function() {
   AppState.definitions = {}
   AppState.definitions.fn = {}
   AppState.definitions.matchers = Object.create(Internal.matchers)
@@ -37,4 +37,4 @@ AppState.setup = function() {
   Object.seal(AppState)
 }
 
-AppState.setup()
+AppState.reset()

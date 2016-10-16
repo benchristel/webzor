@@ -1,6 +1,6 @@
 describe('define.matcher', function() {
   beforeEach(function() {
-    AppState.setup()
+    AppState.reset()
   })
 
   it('adds the new matcher to the `should` object', function() {
