@@ -1,3 +1,5 @@
+#!/bin/sh
+
 which jasmine > /dev/null || echo 'jasmine must be installed first: try `npm i -g jasmine`'
 
 SOURCE_FILES='src/core.js src/lib/*.js'
